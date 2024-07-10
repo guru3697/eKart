@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Contact Us</title>    
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+        }
+        
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #d5d5d5;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width:600px;
+            height: 500px;
+            background-color: #f1efef;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .container h1 {
+            background-color: #bab5b5;
+            padding: 10px;
+            margin-top: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .contact-form {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"] {
+            width: 50%;
+            background-color: #a3a1a1;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #cac9c9;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .company-details-container {
+            background-color: #bab5b5;
+            border-radius: 5%;
+            display: flex;
+            font-size: 20px;
+            flex-direction: column;
+            align-items: center;
+            width: 107%;
+            height:50%;
+            margin-top: 0px;
+            margin-bottom: 30px;
+        }
+        .company-details h2 {
+            color: #ffffff;
+        }
+        .company-details p {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script>
+        function validateContactForm() {
+            var fullName = document.getElementById('contactFullName').value;
+            var email = document.getElementById('contactEmail').value;
+            var message = document.getElementById('contactMessage').value;
+
+            // Dummy validation. Replace with actual validation logic.
+            if (fullName === "" || email === "" || message === "") {
+                document.getElementById('contactErrorMessage').textContent = 'Please fill in all fields.';
+                return false;
+            }
+
+            // Dummy: Display a success message
+            alert('Thank you for contacting us!');
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Contact
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="contact-form">
+            <form action="#" method="post" onsubmit="return validateContactForm()">
+                <input type="text" id="contactFullName" name="contactFullName" required placeholder="Full Name">
+                <input type="email" id="contactEmail" name="contactEmail" required placeholder="Email">
+                <textarea id="contactMessage" name="contactMessage" rows="4" required placeholder="Your Message"></textarea>
+                <div class="error-message" id="contactErrorMessage"></div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <br><br/>
+        <div class="company-details-container">
+            <h2>Company Details</h2>
+            <p>Address: 123 Main Street, Cityville</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@ekart.com</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

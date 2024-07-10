@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Checkout</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        thead {
+            background-color: #343a40;
+            color: white;
+        }
+        tfoot {
+            font-weight: bold;
+        }
+        .ContinueShopping {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4" style="text-align: center;">Checkout</h2>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price per Unit</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody id="checkout-table-body">
+                <!-- Table content will be dynamically generated here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Grand Total:</td>
+                    <td id="grand-total"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <a class="ContinueShopping btn btn-secondary" href="cart.html">Back to Cart</a>
+    <br><br/>
+    <a class="ContinueShopping btn btn-primary" href="payment.html">Continue to Payment</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to calculate and display the checkout table
+            function displayCheckoutTable() {
+                // Get the cart data from localStorage
+                var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Get the container to display the checkout table
+                var checkoutTableBody = document.getElementById('checkout-table-body');
+                var grandTotalElement = document.getElementById('grand-total');
+
+                // Clear the container before displaying the updated table
+                checkoutTableBody.innerHTML = '';
+
+                var grandTotal = 0;
+
+                // Iterate through each item in the cart and display it in the table
+                cart.forEach(function (item) {
+                    // Convert price and quantity to numbers
+                    var price = parseFloat(item.price.replace(/₹|,/g, '')); // Remove ₹ and commas, and convert to number
+                    var quantity = parseInt(item.quantity);
+
+                    var totalPrice = price * quantity;
+                    grandTotal += totalPrice;
+
+                    var tableRow = document.createElement('tr');
+                    tableRow.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>${quantity}</td>
+                        <td>${item.price}</td>
+                        <td>₹${totalPrice}</td>
+                    `;
+
+                    checkoutTableBody.appendChild(tableRow);
+                });
+
+                // Display the grand total with ₹ symbol
+                grandTotalElement.textContent = `₹${grandTotal}`;
+            }
+
+            // Display the checkout table when the page is loaded
+            displayCheckoutTable();
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
