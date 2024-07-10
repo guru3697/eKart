@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="shortcut icon" href="1.png" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff; 
+        }
+        .container {
+            background-color: #f1efef; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .container h1 {
+            background-color: #bab5b5; 
+            padding: 20px;
+            margin-top: 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        label {
+            display: left;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 5%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .phone-input {
+            display: flex;
+            align-items: center;
+            margin-right: 50px;
+        }
+        .phone-input select {
+            margin-right: 30px;
+        }
+        input, select {
+            width: 75%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        input[type="password"]:not(#password) {
+            margin-bottom: 10px;
+        }
+        #confirmPassword {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            width: 20%;
+            background-color: #a3a1a1;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #cac9c9;
+        }
+
+        .password-strength {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .confirmation-container {
+            background-color: #f1efef; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: none;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var countryCode = document.getElementById('countryCode').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (username === "" || email === "" || phoneNumber === "" || password === "" || confirmPassword === "") {
+                alert("Please fill in all the fields.");
+                return false;
+            }
+
+            if (!/^\w+$/.test(username)) {
+                alert("Username can only contain letters, numbers, and underscores.");
+                return false;
+            }
+
+            if (!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Create a new user object
+            var newUser = {
+                username: username,
+                email: email,
+                countryCode: countryCode,
+                phoneNumber: phoneNumber,
+                password: password
+            };
+
+            document.getElementById('confirmUsername').textContent = username;
+            document.getElementById('confirmEmail').textContent = email;
+            document.getElementById('confirmPhoneNumber').textContent = countryCode + phoneNumber;
+
+            document.getElementById('userInformationForm').style.display = 'none';
+            document.getElementById('confirmationBox').style.display = 'block';
+
+            return false;
+        }
+
+        function showSignupForm() {
+            document.getElementById('userInformationForm').style.display = 'block';
+            document.getElementById('confirmationBox').style.display = 'none';
+        }
+
+        function updatePasswordStrength(password) {
+            const strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^.a-zA-Z\d]).{8,}$/;
+            const mediumPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^.a-zA-Z\d]).{6,}$/;
+            const passwordStrengthText = document.getElementById('passwordStrength');
+
+            if (strongPasswordPattern.test(password)) {
+                passwordStrengthText.textContent = 'Password Strength: Strong';
+                passwordStrengthText.style.color = 'green';
+            } else if (mediumPasswordPattern.test(password)) {
+                passwordStrengthText.textContent = 'Password Strength: Medium';
+                passwordStrengthText.style.color = 'orange';
+            } else {
+                passwordStrengthText.textContent = 'Password Strength: Weak';
+                passwordStrengthText.style.color = 'red';
+            }
+        }
+
+        function redirectHome() {
+            // Retrieve phone number from local storage
+            const storedPhoneNumber = localStorage.getItem('phoneNumber');
+            const storedpassword = localStorage.getItem('password');
+            window.location.href = "login.php";
+        }
+    </script>
+</head>
+<body>
+    <div class="container" id="userInformationForm">
+        <h1>Signup</h1>
+        <form action="signup.php" method="post" onsubmit="return validateForm()">
+            <input type="text" id="username" name="username" required placeholder="Username" pattern="\w+"><br>
+            <input type="email" id="email" name="email" required placeholder="E-Mail"><br>
+            <div class="phone-input">
+                <select id="countryCode" name="countryCode" style="width: 40%; padding: 10px; margin-bottom: 10px; margin-left: 50px;">
+                    <option value="+91">+91 (India)</option>    
+                    <option value="+1">+1 (United States)</option>
+                    <option value="+44">+44 (United Kingdom)</option>
+                    <option value="+33">+33 (France)</option>
+                    <option value="+81">+81 (Japan)</option>
+                    <option value="+86">+86 (China)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+49">+49 (Germany)</option>
+                    <option value="+7">+7 (Russia)</option>
+                    <option value="+82">+82 (South Korea)</option>
+                    <option value="+34">+34 (Spain)</option>
+                    <option value="+92">+92 (Pakistan)</option>
+                    <option value="+65">+65 (Singapore)</option>
+                    <option value="+234">+234 (Nigeria)</option>
+                    <option value="+27">+27 (South Africa)</option>
+                    <option value="+52">+52 (Mexico)</option>
+                    <option value="+39">+39 (Italy)</option>
+                    <option value="+351">+351 (Portugal)</option>
+                    <option value="+353">+353 (Ireland)</option>
+                    <option value="+46">+46 (Sweden)</option>
+                </select>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Phone Number"><br>
+            </div>
+            <input type="password" id="password" required placeholder="Password" oninput="updatePasswordStrength(this.value)"><br><br>
+            <div class="password-strength" id="passwordStrength">Password Strength: Please enter a password.</div><br><br>
+            <input type="password" id="confirmPassword" required placeholder="Confirm Password"><br>
+            <input type="submit" value="Signup">
+            <br><br/>
+            <a href="login.php"><input type="button" value="Login"></a>
+        </form>
+    </div>
+
+    <div class="container confirmation-container" id="confirmationBox">
+        <h1>Signup Successful</h1>
+        <p>Username: <span id="confirmUsername"></span></p>
+        <p>E-Mail: <span id="confirmEmail"></span></p>
+        <p>Phone Number: <span id="confirmPhoneNumber"></span></p>
+        <input type="button" value="Continue" onclick="redirectHome()">
+    </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Your Orders</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            color: #d5d5d5;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .order-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 1rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .delivery-status-box {
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-box-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-label {
+            margin-left: 10px;
+            color: #ffffff;
+        }
+
+        .order-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .return-cancel-btn {
+            width: 48%;
+        }
+
+        .canceled-status,
+        .returned-status {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .no-orders {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 50px;
+            font-size: x-large;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="orders.html">Orders
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 style="text-align: center; color: #007bff;">Your Orders</h2>
+
+        <!-- Display orders using product cards -->
+        <div id="orderList" class="row"></div>
+
+        <!-- Display message when there are no orders -->
+        <div id="noOrders" class="no-orders"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch orders from localStorage
+            var ordersData = JSON.parse(localStorage.getItem('orders')) || [];
+            var orderListContainer = document.getElementById('orderList');
+            var noOrdersContainer = document.getElementById('noOrders');
+
+            if (ordersData.length === 0) {
+                noOrdersContainer.textContent = 'No Orders To Show';
+            } else {
+                ordersData.forEach(function (order, orderIndex) {
+                    order.products.forEach(function (product, productIndex) {
+                        var orderColumn = document.createElement('div');
+                        orderColumn.className = 'col-lg-6 mb-4';
+
+                        var orderCard = document.createElement('div');
+                        orderCard.className = 'card h-100 order-card';
+
+                        var cardBody = document.createElement('div');
+                        cardBody.className = 'card-body';
+
+                        var cardTitle = document.createElement('h4');
+                        cardTitle.className = 'card-title';
+                        cardTitle.textContent = 'Order #' + (orderIndex + 1);
+
+                        var cardText = document.createElement('p');
+                        cardText.className = 'card-text';
+                        cardText.textContent = 'Product: ' + product.name + ' - Quantity: ' + product.quantity + ' - Price: ' + product.price;
+
+                        var deliveryStatusBox = document.createElement('div');
+                        deliveryStatusBox.className = 'delivery-status-box';
+
+                        var statusBoxContent = document.createElement('div');
+                        statusBoxContent.className = 'status-box-content';
+
+                        var deliveredCheckbox = document.createElement('input');
+                        deliveredCheckbox.type = 'checkbox';
+                        deliveredCheckbox.className = 'delivery-status-checkbox';
+                        deliveredCheckbox.id = 'deliveredCheckbox' + orderIndex + '-' + productIndex;
+                        deliveredCheckbox.checked = order.delivered;
+
+                        var checkboxLabel = document.createElement('label');
+                        checkboxLabel.className = 'checkbox-label';
+                        checkboxLabel.htmlFor = 'deliveredCheckbox' + orderIndex + '-' + productIndex;
+
+                        var statusText = document.createElement('span');
+                        statusText.className = 'status-text';
+                        statusText.textContent = order.delivered ? 'Delivered' : 'Not Delivered';
+
+                        // Add event listener to the checkbox
+                        deliveredCheckbox.addEventListener('change', function () {
+                            // Update the status text based on the checkbox state
+                            statusText.textContent = deliveredCheckbox.checked ? 'Delivered' : 'Not Delivered';
+                            // Update button text based on the checkbox state
+                            returnCancelBtn.textContent = deliveredCheckbox.checked ? 'Return Order' : 'Cancel Order';
+
+                            // Update the delivery status in the ordersData array
+                            ordersData[orderIndex].delivered = deliveredCheckbox.checked;
+
+                            // Save the updated ordersData to localStorage
+                            localStorage.setItem('orders', JSON.stringify(ordersData));
+                        });
+
+                        statusBoxContent.appendChild(deliveredCheckbox);
+                        statusBoxContent.appendChild(checkboxLabel);
+                        statusBoxContent.appendChild(statusText);
+
+                        deliveryStatusBox.appendChild(statusBoxContent);
+
+                        var orderActions = document.createElement('div');
+                        orderActions.className = 'order-actions';
+
+                        var returnCancelBtn = document.createElement('button');
+                        returnCancelBtn.type = 'button';
+                        returnCancelBtn.className = 'btn btn-danger return-cancel-btn';
+
+                        // Set initial button text based on the delivery status
+                        returnCancelBtn.textContent = order.delivered ? 'Return Order' : 'Cancel Order';
+
+                        returnCancelBtn.onclick = function () {
+                            var action = order.delivered ? 'Return' : 'Cancel';
+
+                            // Display confirmation dialog
+                            var isConfirmed = confirm('Are you sure you want to ' + action.toLowerCase() + ' Order #' + (orderIndex + 1) + ' for ' + product.name + '?');
+
+                            if (isConfirmed) {
+                                // Update the UI based on the action
+                                if (action === 'Cancel') {
+                                    // Remove checkbox, delivery status, and button
+                                    deliveredCheckbox.style.display = 'none';
+                                    deliveryStatusBox.style.display = 'none';
+                                    returnCancelBtn.style.display = 'none';
+
+                                    // Display order canceled status
+                                    var canceledStatus = document.createElement('div');
+                                    canceledStatus.className = 'canceled-status';
+                                    canceledStatus.textContent = 'Order Canceled';
+                                    cardBody.appendChild(canceledStatus);
+
+                                    // Update the order data in localStorage
+                                    order.products[productIndex].status = 'Canceled';
+                                    localStorage.setItem('orders', JSON.stringify(ordersData));
+                                } else if (action === 'Return') {
+                                    // Remove checkbox, delivery status, and button
+                                    deliveredCheckbox.style.display = 'none';
+                                    deliveryStatusBox.style.display = 'none';
+                                    returnCancelBtn.style.display = 'none';
+
+                                    // Display order returned status
+                                    var returnedStatus = document.createElement('div');
+                                    returnedStatus.className = 'returned-status';
+                                    returnedStatus.textContent = 'Order Returned';
+                                    cardBody.appendChild(returnedStatus);
+
+                                    // Update the order data in localStorage
+                                    order.products[productIndex].status = 'Returned';
+                                    localStorage.setItem('orders', JSON.stringify(ordersData));
+                                }
+                            }
+                        };
+
+                        orderActions.appendChild(deliveryStatusBox);
+                        orderActions.appendChild(returnCancelBtn);
+
+                        cardBody.appendChild(cardTitle);
+                        cardBody.appendChild(cardText);
+                        cardBody.appendChild(orderActions);
+
+                        orderCard.appendChild(cardBody);
+                        orderColumn.appendChild(orderCard);
+                        orderListContainer.appendChild(orderColumn);
+
+                        // Adjust display based on order status
+                        if (order.products[productIndex].status === 'Canceled') {
+                            deliveredCheckbox.style.display = 'none';
+                            deliveryStatusBox.style.display = 'none';
+                            returnCancelBtn.style.display = 'none';
+
+                            var canceledStatus = document.createElement('div');
+                            canceledStatus.className = 'canceled-status';
+                            canceledStatus.textContent = 'Order Canceled';
+                            cardBody.appendChild(canceledStatus);
+                        } else if (order.products[productIndex].status === 'Returned') {
+                            deliveredCheckbox.style.display = 'none';
+                            deliveryStatusBox.style.display = 'none';
+                            returnCancelBtn.style.display = 'none';
+
+                            var returnedStatus = document.createElement('div');
+                            returnedStatus.className = 'returned-status';
+                            returnedStatus.textContent = 'Order Returned';
+                            cardBody.appendChild(returnedStatus);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

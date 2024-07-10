@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Payment</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            padding-top: 20px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .payment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-check-label {
+            margin-left: 10px;
+        }
+
+        #placeOrderBtn {
+            width: 100%;
+        }
+
+        .payment-details {
+            display: none;
+        }
+
+        #totalAmount {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Style for product card */
+        .product-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 1rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Payment Details</h2>
+
+        <!-- Display total payable amount -->
+        <div id="totalAmount">Total Payable Amount: ₹<span id="totalAmountValue"></span></div>
+
+        <form class="payment-form">
+            <div class="form-group">
+                <label for="orderDetails">Order Details:</label>
+                <!-- Display order details using product cards -->
+                <div id="orderDetails" class="row"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">Select Method of Payment:</label>
+                <select class="form-control" id="paymentMethod" onchange="togglePaymentDetails()">
+                    <option value="" selected>Select Method of Payment</option>
+                    <option value="cashOnDelivery">Cash on Delivery</option>
+                    <option value="debitCard">Debit Card</option>
+                    <option value="upi">UPI</option>
+                </select>
+            </div>
+
+            <div id="cashOnDeliveryDetails" class="payment-details">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cashOnDeliveryCheckbox">
+                    <label class="form-check-label" for="cashOnDeliveryCheckbox">I agree to pay cash on delivery</label>
+                </div>
+            </div>
+
+            <div id="debitCardDetails" class="payment-details">
+                <div class="form-group">
+                    <label for="debitCardNumber">Last 4 Digits of Debit Card:</label>
+                    <input type="text" class="form-control" id="debitCardNumber" maxlength="4" placeholder="Enter Last 4 Digits">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" class="form-control" id="cvv" maxlength="3" placeholder="Enter CVV">
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="date" class="form-control" id="expiryDate" min="2023-11-22" placeholder="Select Expiry Date">
+                </div>
+            </div>
+
+            <div id="upiDetails" class="payment-details">
+                <div class="form-group">
+                    <label for="upiId">UPI ID:</label>
+                    <input type="text" class="form-control" id="upiId" placeholder="Enter UPI ID">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="placeOrderBtn" onclick="placeOrder()">Place Order</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Fetch total payable amount from checkout page
+        var cartData = JSON.parse(localStorage.getItem('cart')) || [];
+        var grandTotal = 0;
+
+        cartData.forEach(function (product) {
+            var price = parseFloat(product.price.replace(/₹|,/g, ''));
+            grandTotal += price * product.quantity;
+        });
+
+        var totalAmountValue = document.getElementById('totalAmountValue');
+        totalAmountValue.textContent = grandTotal;
+
+        // Display order details using product cards
+        var orderDetailsContainer = document.getElementById('orderDetails');
+
+        cartData.forEach(function (product) {
+            var cardColumn = document.createElement('div');
+            cardColumn.className = 'col-lg-4 col-md-6 mb-4';
+
+            var productCard = document.createElement('div');
+            productCard.className = 'card h-100 product-card';
+
+            var cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            var cardTitle = document.createElement('h4');
+            cardTitle.className = 'card-title';
+            cardTitle.textContent = product.name;
+
+            var cardPrice = document.createElement('h5');
+            cardPrice.className = 'card-price';
+            cardPrice.textContent = product.price;
+
+            var cardText = document.createElement('p');
+            cardText.className = 'card-text';
+            cardText.textContent = 'Quantity: ' + product.quantity;
+
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardPrice);
+            cardBody.appendChild(cardText);
+
+            productCard.appendChild(cardBody);
+            cardColumn.appendChild(productCard);
+            orderDetailsContainer.appendChild(cardColumn);
+        });
+
+        // Toggle display of payment details based on selected payment method
+        function togglePaymentDetails() {
+            var selectedPaymentMethod = document.getElementById('paymentMethod').value;
+            var paymentDetailsSections = document.getElementsByClassName('payment-details');
+
+            for (var i = 0; i < paymentDetailsSections.length; i++) {
+                paymentDetailsSections[i].style.display = 'none';
+            }
+
+            document.getElementById(selectedPaymentMethod + 'Details').style.display = 'block';
+        }
+
+        // Place order function
+        function placeOrder() {
+            var cashOnDeliveryCheckbox = document.getElementById('cashOnDeliveryCheckbox');
+            var debitCardNumber = document.getElementById('debitCardNumber').value;
+            var debitCardCvv = document.getElementById('cvv').value;
+            var debitCardExpiryDate = document.getElementById('expiryDate').value;
+            var upiId = document.getElementById('upiId').value;
+
+            // Check if any payment details are filled
+            if ((cashOnDeliveryCheckbox.checked) || (isNumeric(debitCardNumber) && isNumeric(debitCardCvv) && isValidExpiryDate(debitCardExpiryDate)) || upiId) {
+                // Implement logic to place the order
+                var orderData = {
+                    products: cartData,
+                    paymentMethod: document.getElementById('paymentMethod').value,
+                    cashOnDelivery: cashOnDeliveryCheckbox.checked,
+                    debitCard: debitCardNumber,
+                    upiId: upiId
+                };
+
+                // Retrieve existing orders from localStorage or initialize an empty array
+                var orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+                // Add the new order to the orders array
+                orders.push(orderData);
+
+                // Update the orders in localStorage
+                localStorage.setItem('orders', JSON.stringify(orders));
+
+                // Remove products from the cart
+                localStorage.removeItem('cart');
+
+                alert('Order Placed!');
+                // Redirect to "Orders" page
+                window.location.href = 'orders.html';
+            } else {
+                alert('Please fill in correct details for at least one payment method.');
+            }
+        }
+
+        // Helper function to check if a value is numeric
+        function isNumeric(value) {
+            return /^\d+$/.test(value);
+        }
+
+        // Helper function to check if the expiry date is valid (greater than today)
+        function isValidExpiryDate(date) {
+            var currentDate = new Date();
+            var inputDate = new Date(date);
+            return inputDate > currentDate;
+        }
+    </script>
+
+</body>
+</html>

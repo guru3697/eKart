@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Your E-Commerce Site Name</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+        .product-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-card .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .add-to-cart-btn {
+            width: 65%;
+            font-size: 10px;
+            padding: 10px;
+        }
+        .quantity-input {
+            width: 30%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="recommendations.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="product.html">Item One</a>
+                        </h4>
+                        <h5>$24.99</h5>
+                        <p class="card-text">Description of the product goes here.</p>
+                    </div>
+                    <div class="card-footer">
+                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                        <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add event listeners to all "Add to Cart" buttons
+        var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        addToCartButtons.forEach(function (button) {
+            button.addEventListener('click', addToCart);
+        });
+
+        // Function to handle "Add to Cart" button click
+        function addToCart(event) {
+            var productCard = event.target.closest('.card');
+            var productName = productCard.querySelector('.card-title a').innerText;
+            var productPrice = productCard.querySelector('.card-body h5').innerText;
+            var quantity = productCard.querySelector('.quantity-input').value;
+
+            // Get or initialize the cart data from localStorage
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the product is already in the cart
+            var existingProductIndex = cart.findIndex(function (item) {
+                return item.name === productName;
+            });
+
+            if (existingProductIndex !== -1) {
+                // If the product is already in the cart, update the quantity
+                cart[existingProductIndex].quantity = parseInt(cart[existingProductIndex].quantity) + parseInt(quantity);
+            } else {
+                // If the product is not in the cart, add it
+                cart.push({
+                    name: productName,
+                    price: productPrice,
+                    quantity: quantity
+                });
+            }
+
+            // Save the updated cart data to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    });
+</script>
+</html>

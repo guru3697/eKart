@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Fashion</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            padding-top: 56px; /* Adjusted to accommodate fixed navbar */
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #d5d5d5;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+        }
+        .product-card .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .add-to-cart-btn {
+            width: 55%;
+            font-size: 10px;
+            padding: 10px;
+            display: flex;
+        }
+        .quantity-input {
+            width: 30%;
+            display: flex;
+            padding: 10px;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .fashion-tab.active {
+            background-color: #007bff; 
+            color: #ffffff; 
+        }
+        .card-img-top {
+            width:300px;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="electronics.html" class="list-group-item electronics-tab">Electronics</a>
+                    <a href="fashion.html" class="list-group-item fashion-tab">Fashion</a>
+                    <a href="grocery.html" class="list-group-item grocery-tab">Grocery</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                </div>
+
+                <div class="row">
+                    <!-- Product 1: Belt -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\belt.jpg" data-hover-image="fashion\belt2.jpg" alt="Belt"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Belt</a></h4>
+                                <h5>₹500</h5>
+                                <p class="card-text">Stylish and durable belt for any occasion.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Glasses -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\glasses.jpeg" data-hover-image="fashion\glasses2.jpg" alt="Glasses"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Glasses</a></h4>
+                                <h5>₹300</h5>
+                                <p class="card-text">Trendy eyewear to elevate your style.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Shoes -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\shoes.jpeg" data-hover-image="fashion\shoes2.jpeg" alt="Shoes"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Shoes</a></h4>
+                                <h5>₹1,500</h5>
+                                <p class="card-text">Comfortable and stylish shoes for every step.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4: Wallet -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\wallet.jpg" data-hover-image="fashion\wallet2.jpg" alt="Wallet"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Wallet</a></h4>
+                                <h5>₹800</h5>
+                                <p class="card-text">Sleek and functional wallet to keep your essentials organized.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue adding products in a similar format -->
+
+                    <!-- Product 5: Chappal -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\chappal.jpg" data-hover-image="fashion\chappal2.jpg" alt="Chappal"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Chappal</a></h4>
+                                <h5>₹400</h5>
+                                <p class="card-text">Casual and comfortable chappal for a relaxed day out.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6: Handbag -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\handbag.jpg" data-hover-image="fashion\handbag2.jpg" alt="Handbag"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Handbag</a></h4>
+                                <h5>₹1,200</h5>
+                                <p class="card-text">Fashionable handbag to complement your style.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7: Sports Shoes -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\sportsshoes.jpeg" data-hover-image="fashion\sportsshoes2.jpeg" alt="Sports Shoes"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Sports Shoes</a></h4>
+                                <h5>₹1,800</h5>
+                                <p class="card-text">High-performance sports shoes for active individuals.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8: Hoodie -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\hoodie.jpg" data-hover-image="fashion\hoodie2.jpg" alt="Hoodie"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Hoodie</a></h4>
+                                <h5>₹1,000</h5>
+                                <p class="card-text">Comfortable and stylish hoodie for a casual look.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9: Crocs -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\crocs.jpeg" data-hover-image="fashion\crocs2.jpg" alt="Crocs"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Crocs</a></h4>
+                                <h5>₹700</h5>
+                                <p class="card-text">Casual and comfortable Crocs for everyday wear.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10: Suit -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\suit.jpeg" data-hover-image="fashion\suit2.jpeg" alt="Suit"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Suit</a></h4>
+                                <h5>₹4,500</h5>
+                                <p class="card-text">Elegant suit for formal occasions.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 11: Jean Pant -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\jeanpant.jpeg" data-hover-image="fashion\jeanpant2.jpeg" alt="Jean Pant"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Jean Pant</a></h4>
+                                <h5>₹900</h5>
+                                <p class="card-text">Classic jean pant for a timeless look.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 12: Formal Wear -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\formal.jpeg" data-hover-image="fashion\formal2.jpeg" alt="Formal Wear"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Formal Wear</a></h4>
+                                <h5>₹3,200</h5>
+                                <p class="card-text">Sophisticated formal wear for a polished look.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 13: Sweater -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\sweater.jpg" data-hover-image="fashion\sweater2.jpg" alt="Sweater"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Sweater</a></h4>
+                                <h5>₹1,200</h5>
+                                <p class="card-text">Warm and stylish sweater for the cold season.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 14: Sandals -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\sandals.jpg" data-hover-image="fashion\sandals2.jpg" alt="Sandals"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Sandals</a></h4>
+                                <h5>₹800</h5>
+                                <p class="card-text">Casual and comfortable sandals for everyday wear.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 15: Track Pant -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\trackpant.jpeg" data-hover-image="fashion\trackpant2.jpg" alt="Track Pant"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Track Pant</a></h4>
+                                <h5>₹950</h5>
+                                <p class="card-text">Comfortable track pant for casual and athletic wear.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 16: Formal Pant -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\formalpant.jpeg" data-hover-image="fashion\formalpant2.jpeg" alt="Formal Pant"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Formal Pant</a></h4>
+                                <h5>₹1,300</h5>
+                                <p class="card-text">Classic formal pant for a professional look.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 17: Shirt -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\shirt.jpeg" data-hover-image="fashion\shirt2.jpg" alt="Shirt"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">Shirt</a></h4>
+                                <h5>₹900</h5>
+                                <p class="card-text">Stylish shirt for a casual or semi-formal look.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 18: T-shirt -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="fashion\tshirt.jpeg" data-hover-image="fashion\tshirt2.jpeg" alt="T-shirt"></a>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="recommendations.html">T-shirt</a></h4>
+                                <h5>₹500</h5>
+                                <p class="card-text">Casual and comfortable t-shirt for everyday wear.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Repeat for other products -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Enjoy Shopping @ EKart!!😊</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Add this script at the end of the body section -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var fashionTab = document.querySelector(".fashion-tab");
+        fashionTab.classList.add("active");
+
+        var productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(function (card) {
+            var image = card.querySelector('.card-img-top');
+
+            // Store the original image source and the hover image source
+            var originalSrc = image.src;
+            var hoverSrc = image.getAttribute('data-hover-image');
+            // Add event listeners for mouse enter and leave
+            card.addEventListener('mouseenter', function () {
+                image.src = hoverSrc; // Change the image source on mouse enter
+            });
+            card.addEventListener('mouseleave', function () {
+                image.src = originalSrc; // Restore the original image source on mouse leave
+            });
+            // Add event listener for "Add to Cart" button
+            var addToCartButton = card.querySelector('.add-to-cart-btn');
+            addToCartButton.addEventListener('click', addToCart);
+        });
+        // Function to handle "Add to Cart" button click
+        function addToCart(event) {
+            var productCard = event.target.closest('.product-card');
+            var productName = productCard.querySelector('.card-title a').innerText;
+            var productPrice = productCard.querySelector('.card-body h5').innerText;
+            var quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var existingProduct = cart.find(function (item) {
+                return item.name === productName;
+            });
+
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: productPrice,
+                    quantity: quantity
+                });
+            }
+
+            displayPopup(productName, quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function displayPopup(productName, quantity) {
+            var popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.textContent = quantity + ' ' + productName + ((quantity > 1) ? 's' : '') + ' added to cart!';
+
+            // Styling for the popup
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            popup.style.color = '#ffffff';
+            popup.style.padding = '15px';
+            popup.style.borderRadius = '5px';
+            popup.style.zIndex = '9999';
+
+            document.body.appendChild(popup);
+
+            // Remove the popup after 2 seconds
+            setTimeout(function () {
+                document.body.removeChild(popup);
+            }, 2000);
+        }
+    });
+</script>
+</body>
+</html>

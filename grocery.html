@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKart - Grocerry</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            padding-top: 56px; /* Adjusted to accommodate fixed navbar */
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #d5d5d5;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+        }
+        .product-card .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .add-to-cart-btn {
+            width: 55%;
+            font-size: 10px;
+            padding: 10px;
+            display: flex;
+        }
+        .quantity-input {
+            width: 30%;
+            display: flex;
+            padding: 10px;
+        }
+        .electronics-tab.active {
+            background-color: #007bff; 
+            color: #ffffff; 
+        }
+        .card-img-top {
+            width:300px;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="electronics.html" class="list-group-item electronics-tab">Electronics</a>
+                    <a href="fashion.html" class="list-group-item fashion-tab">Fashion</a>
+                    <a href="grocery.html" class="list-group-item grocery-tab">Grocery</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/apples.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Fresh Apples</a>
+                                </h4>
+                                <h5>₹200</h5>
+                                <p class="card-text">Fresh apples from the local orchard.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/banana_final.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Organic Bananas</a>
+                                </h4>
+                                <h5>₹100</h5>
+                                <p class="card-text">Fresh organic bananas for a healthy snack.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/wholegrainbread.jpeg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Whole Grain Bread</a>
+                                </h4>
+                                <h5>₹50</h5>
+                                <p class="card-text">Healthy whole grain bread for your daily needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/milkpacket.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Fresh Milk</a>
+                                </h4>
+                                <h5>₹30</h5>
+                                <p class="card-text">Farm-fresh milk for your daily needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/cannedsoup.jpeg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Canned Soup</a>
+                                </h4>
+                                <h5>₹150</h5>
+                                <p class="card-text">Convenient canned soup for a quick meal.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/pasta and sauce.png" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Pasta and Sauce</a>
+                                </h4>
+                                <h5>₹200</h5>
+                                <p class="card-text">Pasta and sauce combo for a delicious meal.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/coffee.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Ground Coffee</a>
+                                </h4>
+                                <h5>₹300</h5>
+                                <p class="card-text">Rich and aromatic ground coffee beans.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/spinach-leaves-500x500.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Fresh Spinach</a>
+                                </h4>
+                                <h5>₹20</h5>
+                                <p class="card-text">Nutrient-rich fresh spinach leaves.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/oil.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Oil</a>
+                                </h4>
+                                <h5>₹500</h5>
+                                <p class="card-text">Pure Oil for cooking.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/sugar.jpeg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Sugar (1kg)</a>
+                                </h4>
+                                <h5>₹50</h5>
+                                <p class="card-text">High-quality sugar for your cooking needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/wheatflour.jpeg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Wheat Flour (5kg)</a>
+                                </h4>
+                                <h5>₹90</h5>
+                                <p class="card-text">Premium quality wheat flour for your daily meals.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/toordal.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Toor Dal (1kg)</a>
+                                </h4>
+                                <h5>₹120</h5>
+                                <p class="card-text">High-quality toor dal for your meals.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/salt.jpeg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Salt (1kg)</a>
+                                </h4>
+                                <h5>₹15</h5>
+                                <p class="card-text">High-quality salt for your cooking needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/blackgram.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Black Gram (1kg)</a>
+                                </h4>
+                                <h5>₹81</h5>
+                                <p class="card-text">High-quality black gram for your meals.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/besan.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Besan (500g)</a>
+                                </h4>
+                                <h5>₹30</h5>
+                                <p class="card-text">High-quality besan for your cooking needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/idliravva.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Idli Ravva (1kg)</a>
+                                </h4>
+                                <h5>₹45</h5>
+                                <p class="card-text">High-quality idli ravva for making delicious idlis.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/rice flour.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Rice Flour (2kg)</a>
+                                </h4>
+                                <h5>₹75</h5>
+                                <p class="card-text">High-quality rice flour for your cooking needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <a href="recommendations.html"><img class="card-img-top" src="grocery/corn flour.jpg" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="recommendations.html">Corn Flour (500g)</a>
+                                </h4>
+                                <h5>₹110</h5>
+                                <p class="card-text">High-quality corn flour for your cooking needs.</p>
+                            </div>
+                            <div class="card-footer">
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Enjoy Shopping @ EKart!!😊</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Your existing code for setting the "Electronics" tab as active
+            var electronicsTab = document.querySelector(".grocery-tab");
+            electronicsTab.classList.add("active");
+
+            // Function to handle "Add to Cart" button click
+            function addToCart(event) {
+            var productCard = event.target.closest('.product-card');
+            var productName = productCard.querySelector('.card-title a').innerText;
+            var productPrice = productCard.querySelector('.card-body h5').innerText;
+            var quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var existingProduct = cart.find(function (item) {
+                return item.name === productName;
+            });
+
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: productPrice,
+                    quantity: quantity
+                });
+            }
+
+            displayPopup(productName, quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function displayPopup(productName, quantity) {
+            var popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.textContent = quantity + ' ' + productName + ((quantity > 1) ? 's' : '') + ' added to cart!';
+
+            // Styling for the popup
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            popup.style.color = '#ffffff';
+            popup.style.padding = '15px';
+            popup.style.borderRadius = '5px';
+            popup.style.zIndex = '9999';
+
+            document.body.appendChild(popup);
+
+            // Remove the popup after 2 seconds
+            setTimeout(function () {
+                document.body.removeChild(popup);
+            }, 2000);
+        }
+
+            // Attach the "addToCart" function to all "Add to Cart" buttons
+            var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(function (button) {
+                button.addEventListener('click', addToCart);
+            });
+        });
+    </script> 
+    
+</body>
+</html>

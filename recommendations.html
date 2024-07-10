@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommendations - EKart</title>
+    <link rel="shortcut icon" href="1.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            padding-top: 56px; /* Adjusted to accommodate fixed navbar */
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #d5d5d5;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .product-card {
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+        }
+        .product-card .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .add-to-cart-btn {
+            width: 55%;
+            font-size: 10px;
+            padding: 10px;
+            display: flex;
+        }
+        .quantity-input {
+            width: 30%;
+            display: flex;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">EKart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div id="samsungSection" class="product-section" style="display: none;">
+            <!-- Recommended Products for Samsung Z-Flip -->
+            <h3 class="mb-4">Recommended Products for Samsung Z-Flip</h3>
+            <div class="row" id="samsungRecommendations">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 product-card">
+                        <img class="card-img-top" src="electronics\camera.jpg" data-hover-image="electronics\camera2.jpg" alt="Camera">
+                        <div class="card-body">
+                            <h4 class="card-title">Camera</h4>
+                            <h5>₹50,000</h5>
+                            <p class="card-text">High-quality digital camera for professional photography.</p>
+                        </div>
+                        <div class="card-footer">
+                            <input type="number" class="form-control quantity-input" value="1" min="1">
+                            <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 product-card">
+                        <img class="card-img-top" src="electronics\dell laptop1.jpeg" data-hover-image="electronics\dell laptop2.jpeg" alt="Dell Laptop">
+                        <div class="card-body">
+                            <h4 class="card-title">Dell Laptop</h4>
+                            <h5>₹80,000</h5>
+                            <p class="card-text">Powerful laptop for work and entertainment.</p>
+                        </div>
+                        <div class="card-footer">
+                            <input type="number" class="form-control quantity-input" value="1" min="1">
+                            <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add other Samsung product cards similarly -->
+            </div>
+        </div>
+    
+        <div id="appleSection" class="product-section" style="display: none;">
+            <!-- Recommended Products for Apple -->
+            <h3 class="mb-4">Recommended Products for Apple</h3>
+            <div class="row" id="appleRecommendations">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 product-card">
+                        <img class="card-img-top" src="grocery/banana_final.jpg" data-hover-image="grocery/banana_final.jpg" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">Organic Bananas</h4>
+                            <h5>₹100</h5>
+                            <p class="card-text">Fresh organic bananas for a healthy snack.</p>
+                        </div>
+                        <div class="card-footer">
+                            <input type="number" class="form-control quantity-input" value="1" min="1">
+                            <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 product-card">
+                        <img class="card-img-top" src="grocery/apples.jpg" data-hover-image="grocery/apples.jpg" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">Fresh Apples</h4>
+                            <h5>₹200</h5>
+                            <p class="card-text">Fresh apples from the local orchard.</p>
+                        </div>
+                        <div class="card-footer">
+                            <input type="number" class="form-control quantity-input" value="1" min="1">
+                            <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add other Apple product cards similarly -->
+            </div>
+        </div>
+        <!-- Other sections for different product types -->
+    </div>
+    
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Enjoy Shopping @ EKart!!😊</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function hideAllSections() {
+                const sections = document.querySelectorAll('.product-section');
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const product = urlParams.get('product');
+
+            if (product === 'samsung') {
+                hideAllSections();
+                document.getElementById('samsungSection').style.display = 'block';
+            } else if (product === 'apple') {
+                hideAllSections();
+                document.getElementById('appleSection').style.display = 'block';
+            }
+
+            var productCards = document.querySelectorAll('.product-card');
+
+            productCards.forEach(function (card) {
+                var image = card.querySelector('.card-img-top');
+                var addToCartButton = card.querySelector('.add-to-cart-btn');
+
+                var originalSrc = image.src;
+                var hoverSrc = image.getAttribute('data-hover-image');
+
+                card.addEventListener('mouseenter', function () {
+                    image.src = hoverSrc;
+                });
+                card.addEventListener('mouseleave', function () {
+                    image.src = originalSrc;
+                });
+
+                addToCartButton.addEventListener('click', function(event) {
+                    addToCart(event);
+                });
+            });
+
+            function addToCart(event) {
+                var productCard = event.target.closest('.product-card');
+                var productName = productCard.querySelector('.card-title').innerText;
+                var productPrice = productCard.querySelector('.card-body h5').innerText;
+                var quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+                var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                var existingProduct = cart.find(function (item) {
+                    return item.name === productName;
+                });
+
+                if (existingProduct) {
+                    existingProduct.quantity += quantity;
+                } else {
+                    cart.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: quantity
+                    });
+                }
+
+                displayPopup(productName, quantity);
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            function displayPopup(productName, quantity) {
+                var popup = document.createElement('div');
+                popup.classList.add('popup');
+                popup.textContent = quantity + ' ' + productName + ((quantity > 1) ? 's' : '') + ' added to cart!';
+
+                // Styling for the popup
+                popup.style.position = 'fixed';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+                popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                popup.style.color = '#ffffff';
+                popup.style.padding = '15px';
+                popup.style.borderRadius = '5px';
+                popup.style.zIndex = '9999';
+
+                document.body.appendChild(popup);
+
+                // Remove the popup after 2 seconds
+                setTimeout(function () {
+                    document.body.removeChild(popup);
+                }, 2000);
+            }
+        });        
+    </script>
+    
+</html>
+
+
+
+file:///D:/WORK/SEM7/Cloud%20Computing/Project/EKart/recommendations.html?product=apple
+file:///D:/WORK/SEM7/Cloud%20Computing/Project/EKart/recommendations.html?product=samsung
